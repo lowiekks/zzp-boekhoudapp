@@ -1,0 +1,8 @@
+```bash
+zzp-boekhoudapp/
+├── client-mobile/      # Flutter-app
+├── client-web/        # React-app
+├── server/            # Node.js + Firebase
+├── .github/workflows/ # CI/CD pipelines
+└── README.md
+```
