@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# Zet de naam van het project
+PROJECT_NAME="zzp-boekhoudapp"
+
+# Maak de hoofdstructuur aan
+echo "Structuur aanmaken voor $PROJECT_NAME..."
+mkdir -p $PROJECT_NAME/{apps/{mobile,web},packages/{ui,api-client,contracts},server/{functions,api},.github/{workflows,ISSUE_TEMPLATE},infra}
+
+# Placeholder README toevoegen
+echo "Voeg README.md toe..."
+cat <<EOT > $PROJECT_NAME/README.md
+# $PROJECT_NAME
+
+## Overzicht
+Boekhoudapp voor ZZP'ers in de Benelux. Gemaakt met Flutter, React, Firebase en AI-integraties.
+
+## Structuur
+\`\`\`
+$PROJECT_NAME/
+├── apps/                  # Applicaties
+│   ├── mobile/           # Flutter app
+│   └── web/              # React webapp
+├── packages/              # Gedeelde pakketten
+│   ├── ui/               # UI-componenten
+│   ├── api-client/       # REST API client
+│   └── contracts/        # Gedeelde data modellen
+├── server/                # Backend
+│   ├── functions/        # Firebase Cloud Functions
+│   └── api/              # Node.js REST API
+├── .github/               # GitHub workflows
+│   ├── workflows/        # CI/CD pipelines
+│   └── ISSUE_TEMPLATE/   # Gestandaardiseerde issues
+└── infra/                 # Infrastructuur
+\`\`\`
+
+## Ontwikkeling
+Zie \`CONTRIBUTING.md\` voor details.
+
+---
+
+EOT
+
+# Voeg een .gitignore toe
+echo "Voeg .gitignore toe..."
+cat <<EOT > $PROJECT_NAME/.gitignore
+# Flutter
+build/
+*.iml
+.android/
+.ios/
+*.flutter-plugins
+*.flutter-plugins-dependencies
+
+# Node.js
+node_modules/
+dist/
+.env
+
+# macOS
+.DS_Store
+EOT
+
+# Voeg een voorbeeld GitHub workflow toe
+echo "Voeg voorbeeld workflow toe..."
+cat <<EOT > $PROJECT_NAME/.github/workflows/main.yml
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - feature/*
+      - hotfix/*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: echo "Install dependencies hier"
+      - name: Run tests
+        run: echo "Test command hier"
+EOT
+
+# Bevestigen
+echo "Projectstructuur aangemaakt! Ga verder met ontwikkelen in de map '$PROJECT_NAME'."
